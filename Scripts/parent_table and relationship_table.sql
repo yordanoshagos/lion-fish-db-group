@@ -28,7 +28,6 @@ values
 ('C014','Hewan', 'female', '2024-01-17', 2, 7),
 ('C015','Abel', 'female', '2018-07-15', 2.5, 7);
 
-select * from malnutrition.children_table;
 create table malnutrition.parent_table(
 parent_id VARCHAR (10) primary key,
 name VARCHAR(50) not null,
@@ -53,11 +52,62 @@ values ('P01','Hannah','+253732516072','Kilimani'),
 ('P15','Carol','+253720987134','Kilimani');
 select * from malnutrition.parent_table
 
+SELECT COUNT(DISTINCT parent_id)
+FROM malnutrition.parent_table
+WHERE name ILIKE 'K%';
+
 create table malnutrition.medical_status(
 medical_id VARCHAR(10) primary key,
-child_id VARCHAR(10) references children_table,
+child_id VARCHAR(10) references malnutrition.children_table,
 type_of_disease VARCHAR(100) not null,
 date Date not Null
 );
+insert into malnutrition.medical_status(medical_id,child_id,type_of_disease,date)
+values
+('M001','C001','Malaria','2021-03-11'),
+('M002','C002','TB','2021-11-16'),
+('M003','C003','Corona','2022-03-17'),
+('M004','C011','Malaria','2021-10-18'),
+('M005','C005','Typhoid','2021-06-22'),
+('M006','C006','Phnemonia','2022-04-27'),
+('M007','C002','Malaria','2021-01-04'),
+('M008','C008','Cholera','2023-03-28'),
+('M009','C009','HIV/AIDS','2021-01-22'),
+('M010','C010','Malaria','2021-11-05'),
+('M011','C011','Phnemonia','2022-09-20'),
+('M012','C012','Malaria','2021-03-02'),
+('M013','C010','TB','2022-04-28'),
+('M014','C014','Cholera','2021-11-27'),
+('M015','C015','Corona','2021-10-06');
+ select * from malnutrition.medical_status
+ 
+ 
+create table malnutrition.relationship_table(
+	relation_id VARCHAR(10) primary key,
+	child_id VARCHAR(10) references malnutrition.children_table(child_id),
+	parent_id VARCHAR(10) references malnutrition.parent_table(parent_id),
+	relationship_to_child VARCHAR(50) not null
+);
+insert into malnutrition.relationship_table(relation_id, child_id, parent_id, relationship_to_child)
+values
+--('R001','C001','P01','father'),
+--('R002','C002','P02','mother'),
+--('R003','C003','P03','mother'),
+--('R004','C004','P04','father'),
+--('R005','C005','P05','father'),
+--('R006','C006','P06','step-mother'),
+--('R007','C007','P07','mother'),
+--('R008','C008','P08','grand-mother'),
+--('R009','C009','P09','father'),
+--('R010','C010','P10','mother'),
+--('R011','C011','P11','father'),
+--('R012','C012','P12','guardian'),
+--('R013','C013','P13','mother'),
+--('R014','C014','P14','father'),
+('R016','C015','P11','mother');
+select * from malnutrition.relationship_table
 
-
+SELECT COUNT(*)
+FROM malnutrition.relationship_table
+GROUP BY child_id
+HAVING COUNT(parent_id) > 1;
