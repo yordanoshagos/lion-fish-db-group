@@ -20,27 +20,6 @@
 				},
 				"auth-model": "native"
 			}
-		},
-		"postgres-jdbc-196a94612ef-13fe96e95c575f1e": {
-			"provider": "postgresql",
-			"driver": "postgres-jdbc",
-			"name": "postgres 2",
-			"save-password": true,
-			"configuration": {
-				"host": "localhost",
-				"port": "5432",
-				"database": "postgres",
-				"url": "jdbc:postgresql://localhost:5432/postgres",
-				"configurationType": "MANUAL",
-				"home": "/usr/lib/postgresql/12",
-				"type": "dev",
-				"closeIdleConnection": true,
-				"provider-properties": {
-					"@dbeaver-show-non-default-db@": "false",
-					"@dbeaver-chosen-role@": ""
-				},
-				"auth-model": "native"
-			}
 		}
 	},
 	"connection-types": {
