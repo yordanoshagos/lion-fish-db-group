@@ -1,3 +1,5 @@
+This repository contains different tables into one schema, which they are interconnected to eachother. We created a supabase then we created our project then we used the same host, user name, port and password. So that time every table we created inside that connection was connected and we were able to reference.  
 We created a schema called malnutrition, which we used to store data on malnourished children undergoing a program. We also kept  track of their progress. 
 In this schema, we have added 5 tables which are the children's table, parents' table, relationship table, medical status, and progress table. under which we have the respective data for the children, 
 their parents, the relationship between the children and their parents, the medical history of the children, and their progress. we have used primary and foreign keys to connect the tables to each other.
+after that we were having a repository which was shared as collabratores for each memeber in our group then we saved our fileds inside our branceh and we commited and pushed.
